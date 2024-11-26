@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to NNRG e-Book's website</title>
+    <script>
+        function validate() {
+            var uname = f1.username.value;
+            if (uname.length < 8) { alert("Username must be at least 8 characters"); f1.username.focus(); return false; }
+
+            var pwd = f1.password.value;
+            if (pwd.length < 6) { alert("Password must be at least 6 characters"); f1.password.focus(); return false; }
+
+            var email = f1.email.value;
+            if (!email.includes("@")) { alert("Invalid Email ID"); f1.email.focus(); return false; }
+
+            var phno = f1.phno.value;
+            if (phno.length != 10 || isNaN(phno)) { alert("Enter a valid 10-digit phone number"); f1.phno.focus(); return false; }
+
+            var gender = Array.from(f1.gen).some(r => r.checked);
+            if (!gender) { alert("Please choose a gender"); return false; }
+
+            var language = Array.from(f1.lang).some(c => c.checked);
+            if (!language) { alert("Please select at least one language"); return false; }
+
+            var addr = f1.address.value;
+            if (!addr) { alert("Please enter your address"); f1.address.focus(); return false; }
+
+            alert("Registration Successful");
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h3>Registration Form</h3>
+        <form name="f1">
+            <table cellpadding="1">
+                <tr><td>User Name:*</td><td><input type="text" name="username"></td></tr>
+                <tr><td>Password:*</td><td><input type="password" name="password"></td></tr>
+                <tr><td>Email ID:*</td><td><input type="text" name="email"></td></tr>
+                <tr><td>Phone Number:*</td><td><input type="text" name="phno"></td></tr>
+                <tr><td>Gender:*</td><td><input type="radio" name="gen" value="Male">Male <input type="radio" name="gen" value="Female">Female</td></tr>
+                <tr><td>Languages Known:*</td>
+                    <td><input type="checkbox" name="lang" value="English">English<br>
+                        <input type="checkbox" name="lang" value="Telugu">Telugu<br>
+                        <input type="checkbox" name="lang" value="Hindi">Hindi<br>
+                        <input type="checkbox" name="lang" value="Tamil">Tamil</td></tr>
+                <tr><td>Address:*</td><td><textarea name="address"></textarea></td></tr>
+                <tr><td></td><td><input type="button" value="SUBMIT" onclick="validate()"> <input type="reset" value="RESET"></td></tr>
+                <tr><td colspan="2">*<font color="#FF0000">fields are mandatory</font></td></tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>
